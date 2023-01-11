@@ -1,0 +1,19 @@
+{
+  "name": "NFT Valuations",
+  "short_name": "NFT Val",
+  "icons": [
+    {
+      "src": "https://dxph5t0rbaxmg.cloudfront.net/images/android-chrome-192x192.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://dxph5t0rbaxmg.cloudfront.net/images/android-chrome-512x512.jpg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#bd081c",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

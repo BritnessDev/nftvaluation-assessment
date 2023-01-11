@@ -1,0 +1,142 @@
+# CI/CD Pipeline for production and staging environment
+# [Production]
+#   1. Code linter is ran
+#   2. Back-end code is built to ensure there are no errors
+#   3. Front-end assets are built and uploaded to S3, and cloudfront cache is invalidated
+#   4. Application is deployed to beanstalk
+#
+# [Staging]
+#   1. Code linter is ran
+#   2. Application is deployed to beanstalk
+
+name: CI/CD Pipeline
+
+on: 
+  push: 
+    branches:
+      - production
+      - staging
+
+jobs:
+  lint:
+    name: Run Code Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with: 
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint
+
+  build:
+    name: Build Back End Code
+    runs-on: ubuntu-latest
+    needs: lint
+    if: github.ref_name == 'production'
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with: 
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build
+        run: npm run build:back
+
+  uploadAssets:
+    name: Build & Upload Front End Assets
+    runs-on: ubuntu-latest
+    needs: lint
+    if: github.ref_name == 'production'
+    env:
+      NODE_ENV: production
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with: 
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Build
+        run: npm run build:front
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: ${{ secrets.AWS_REGION }}
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}} 
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+
+      - name: Deploy dashboard to bucket
+        run: aws s3 sync ./public/assets s3://${{ secrets.AWS_BUCKET }}/assets/
+
+      - name: Invalidate dashboard cloudfront
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/assets/*"
+
+  deploy:
+    name: Deploy Beanstalk
+    runs-on: ubuntu-latest
+    needs: [lint, build, uploadAssets]
+    if: ${{ always() && !cancelled() && needs.lint.result == 'success' }} # Always run this job as long as all 'needs' are done, and lint was successful
+    environment: ${{ github.ref_name == 'production' && 'Production' || 'Staging' }} # Different environment to get different env variables
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
+
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+
+      - name: Get current date time
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYY-MM-DDTHH-mm-ss-SSS
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v20
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: ${{ secrets.BEANSTALK_APPLICATION_NAME }}
+          environment_name: ${{ secrets.BEANSTALK_ENVIRONMENT_NAME }}
+          version_label: "${{ steps.previoustag.outputs.tag }}-${{ steps.current-time.outputs.formattedTime }}"
+          region: ${{ secrets.AWS_REGION }}
+          wait_for_deployment: false
+          deployment_package: deploy.zip

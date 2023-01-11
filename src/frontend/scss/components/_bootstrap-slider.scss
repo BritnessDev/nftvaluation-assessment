@@ -1,0 +1,27 @@
+@import "../bootstrap-theme";
+@import 'bootstrap-slider/dist/css/bootstrap-slider.css';
+
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: $grey10;
+}
+
+.slider.slider-horizontal {
+  width: 100%;
+
+  .slider-track {
+    background-image: none;
+    background-color: $grey90;
+
+    .slider-selection {
+      background-image: none;
+      background-color: $purple10;
+    }
+  }
+  .slider-handle {
+    background-image: none;
+    background-color: $purple60;
+  }
+}

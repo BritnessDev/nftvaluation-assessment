@@ -1,0 +1,39 @@
+.nv-badge {
+  @include typography(2, 500);
+  color: $grey40;
+  background-color: $grey70;
+  border-radius: $border-radius;
+  padding: 2px 5px;
+  display: inline-block;
+  white-space: nowrap;
+
+  &--success {
+    background-color: $green100;
+    color: $green60;
+  }
+
+  &--danger {
+    background-color: $red100;
+    color: $red60;
+  }
+
+  &--info {
+    background-color: $blue100;
+    color: $blue60;
+  }
+
+  &--warning {
+    background-color: $yellow100;
+    color: $yellow60;
+  }
+
+  &--brand {
+    background-color: $purple100;
+    color: $purple40;
+  }
+
+  &--pill {
+    border-radius: 40px;
+    padding: 6px 12px;
+  }
+}

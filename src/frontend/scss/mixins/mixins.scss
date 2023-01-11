@@ -1,0 +1,112 @@
+@mixin profile-photo($diameter) {
+  width: $diameter;
+  height: $diameter;
+  display: block;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+@mixin navbar-user-dropdown() {
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 1.5rem;
+    white-space: nowrap;
+    color: $grey10;
+
+    > .svg-inline--fa {
+      color: $grey10;
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    @include media-breakpoint-down(md) {
+      @include typography(4, 600);
+      padding: 1rem;
+    }
+  }
+
+  .navbar-user-account__profile {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    min-width: 15rem;
+
+    .account-profile-photo {
+      @include profile-photo(36px)
+    }
+
+    .navbar-user-account__balance {
+      flex: 1;
+      margin-left: 1rem;
+
+      .copy-clipboard {
+        background-color: $brand-black-hover;
+        border-radius: 100%;
+        padding: 4px;
+        font-size: 0.7rem;
+        color: white;
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      gap: 20px;
+      padding: 1rem 2rem;
+
+      .navbar-user-account__title {
+        @include typography(4, 700);
+        flex: 1;
+      }
+
+      .navbar-user-account__balance {
+        @include typography(4, 700);
+        color: $purple50;
+        flex: unset;
+        margin: 0;
+      }
+
+    }
+  }
+}
+
+@mixin formControlLight() {
+  background-color: white;
+  border-color: $grey30;
+  color: $text-color-dark;
+
+  &:focus, &:disabled, &[readonly] {
+    background-color: white;
+    border-color: $grey30;
+    color: $text-color-dark;
+    box-shadow: none;
+  }
+}
+
+@mixin transition($x...){
+  -webkit-transition: $x;
+  -moz-transition: $x;
+  -ms-transition: $x;
+  -o-transition: $x;
+  transition: $x;
+}
+
+@mixin customScrollbar {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: $grey100;
+  }
+  
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $grey60;
+  }
+  
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: $grey50;
+  }
+}

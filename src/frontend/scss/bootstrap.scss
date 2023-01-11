@@ -1,0 +1,734 @@
+@import "./bootstrap-theme";
+
+@import "../../../node_modules/bootstrap/scss/reboot";
+@import "../../../node_modules/bootstrap/scss/type";
+@import "../../../node_modules/bootstrap/scss/images";
+@import "../../../node_modules/bootstrap/scss/code";
+@import "../../../node_modules/bootstrap/scss/grid";
+@import "../../../node_modules/bootstrap/scss/utilities";
+
+@import "../../../node_modules/bootstrap/scss/alert";
+@import "../../../node_modules/bootstrap/scss/close";
+@import "../../../node_modules/bootstrap/scss/navbar";
+@import "../../../node_modules/bootstrap/scss/nav";
+@import "../../../node_modules/bootstrap/scss/dropdown";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/card";
+@import "../../../node_modules/bootstrap/scss/transitions";
+@import "../../../node_modules/bootstrap/scss/carousel";
+@import "../../../node_modules/bootstrap/scss/pagination";
+@import "../../../node_modules/bootstrap/scss/spinners";
+@import "../../../node_modules/bootstrap/scss/tables";
+// @import "../../../node_modules/bootstrap/scss/badge";
+@import "../../../node_modules/bootstrap/scss/tooltip";
+@import "../../../node_modules/bootstrap/scss/toasts";
+@import "../../../node_modules/bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/input-group";
+@import "../../../node_modules/bootstrap/scss/custom-forms";
+@import "../../../node_modules/bootstrap/scss/popover";
+@import "../../../node_modules/bootstrap/scss/progress";
+@import "../../../node_modules/bootstrap/scss/modal";
+@import "../../../node_modules/bootstrap/scss/button-group";
+
+// Card redesign
+.card {
+  border: 1px solid $secondary;
+  background-color: $brand-black-hover;
+  border-radius: $border-radius;
+
+  .card-title {
+    @include typography(3, 500);
+    color: $grey30;
+  }
+
+  &--light {
+    background-color: $brand-light-gray;
+    border: none;
+
+    // Loader color
+    .spinner-border {
+      color: $text-color-dark;
+    }
+
+    h2 {
+      color: $text-color-dark;
+    }
+
+  }
+
+  &--dark {
+    background-color: $grey90;
+    border: none;
+    
+    .card-header {
+      background-color: $grey80;
+      border: none !important;
+    }
+  }
+
+  &--scroll .card-body {
+    @include customScrollbar()
+  }
+
+  .card-header {
+    border: none;
+    color: white;
+    border-bottom: 1px solid #3E3E50;
+    @include typography(4, 600);
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    .svg-inline--fa {
+      margin-right: 10px;
+    }
+  }
+
+  .card__heading-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 40px;
+    margin-bottom: 10px;
+    background-color: $secondary;
+
+    &-icon {
+      margin-right: 10px;
+      background: darken($secondary, 5%);
+      padding: 5px;
+      position: relative;
+      height: 40px;
+      width: 40px;
+      text-align: center;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-left: 4px solid $primary;
+    }
+  }
+
+  &__footer {
+    // margin-top: 24px;
+    padding-bottom: 1.25rem;
+    border-top: 1px solid $grey75Line;
+    padding-top: 20px;
+    text-align: center;
+
+    a {
+      @include typography(3, 500);
+      color: $grey40;
+    }
+  }
+}
+
+// Accordion redesign
+.accordion {
+  .card {
+    .card-header {
+      padding: 0;
+
+      > button {
+        padding: 0.75rem 1.25rem 0.75rem 0.6rem;
+        display: block;
+        width: 100%;
+        text-align: left;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: .1s ease-in-out;
+        display: flex;
+        align-items: center;
+
+        &:hover, &:focus {
+          text-decoration: none;
+          box-shadow: none;
+        }
+
+        &:hover::after {
+          transform: scale(1.2)
+        }
+
+        .svg-inline--fa {
+          float: right;
+          margin-left: auto;
+        }
+
+        &[aria-expanded=false] {
+          .fa-minus, .fa-chevron-up {
+            display: none;
+          } 
+        }
+        &[aria-expanded=true] {
+          .fa-plus, .fa-chevron-down {
+            display: none;
+          }
+        }
+
+      }
+    }
+  }
+
+  &--stacked {
+    .card {
+      border: 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
+      &:first-of-type {
+        border-top: 1px solid rgba(0, 0, 0, 0.125);
+      } 
+      &:last-of-type {
+        border-bottom: 1px solid $brand-black-hover !important;
+      }
+      
+      .card-header {
+        background-color: $grey80;
+        border: none;
+
+        > button {
+          color: $grey10;
+          @include typography(4, 500);
+
+          > span {
+            @include typography(3, 500);
+            color: $grey40;
+            margin-left: auto;
+          }
+
+          .svg-inline--fa {
+            margin-left: 10px;
+          }
+        }
+
+        &--with-image {
+
+          > button {
+
+            img {
+              width: 32px;
+              height: 32px;
+              object-fit: cover;
+              border: 1px solid $light-border;
+              border-radius: 100%;
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+
+      &--secondary {
+        &:last-of-type {
+          border-bottom: none !important;
+        }
+
+        .card-header {
+          border-top: 0 !important;
+          background-color: transparent;
+
+          > button {
+            font-size: 1.1rem;
+            padding: 10px 0 6px;
+
+            > span {
+              font-size: 0.9rem;
+              font-weight: normal;
+              color: $text-secondary;
+              margin-left: auto;
+            }
+
+          }
+        }
+      }
+    }
+  }
+
+  .card.card--light {
+    .card-header {
+      background-color: transparent;
+      > button {
+        color: $text-color-dark;
+        border: none;
+        border-top: 1px solid #f4f3f6;
+      }
+    }
+  }
+
+  &:nth-child(2) {
+    .card.card--light .card-header > button {
+      border-width: 3px;
+    }
+  }
+}
+
+// Custom checkboxes
+.custom-control {
+  &.custom-checkbox:has(img) {
+    .custom-control-label {
+      &::before, &::after {
+        top: inherit;
+        width: 32px;
+        height: 32px;
+        left: calc(-32px - 8px);
+        border-radius: 50% !important;
+      }
+    }
+  }
+  &.custom-checkbox {
+    padding: 10px 1rem;
+    padding-left: calc(2rem + 20px) !important;
+
+    .custom-control-label {
+      .svg-inline--fa.fa-check {
+        display: none;
+      }
+
+      &::before {
+        background-color: $grey80;
+        border: none;
+      }
+      // .filter-group__item:has(.custom-control-input:checked) {
+          
+      // }
+      &::before, &::after {
+        top: inherit;
+        width: 32px;
+        height: 32px;
+        left: calc(-32px - 8px);
+        border-radius: 30%;
+      }
+    }
+
+    .custom-control-input:checked ~ .custom-control-label {
+      &::before {
+        background-color: $purple50;
+      }
+
+      .svg-inline--fa.fa-check {
+        font-size: 18px;
+        background-image: none;
+        color: $grey10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: -40px;
+      }
+      &::after {
+        background: none;
+      }
+    }
+
+  }
+
+  &.custom-switch {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 60px;
+    color: $grey10;
+
+    .custom-control-input:checked ~ .custom-control-label {
+      &::before {
+        background-color: $grey60;
+      }
+      &::after {
+        transform: translateX(20px);
+        background-color: $purple50;
+      }
+    }
+
+    .custom-control-label {
+      line-height: 30px !important;
+      
+      &::before {
+        height: 30px;
+        width: 50px;
+        border-radius: 20px;
+        top: 0;
+        left: -60px;
+        box-shadow: none !important;
+        background-color: $grey80;
+        border-color: $grey60;
+      }
+
+      &::after {
+        background-color: $grey50;
+        height: 24px;
+        width: 24px;
+        top: 3px;
+        left: -57px;
+        border-radius: 100%;
+      }
+    }
+
+    .custom-control-input:not(:disabled):active ~ .custom-control-label,
+    .custom-control-input:focus:not(:checked) ~ .custom-control-label,
+    .custom-control-input:hover:not(:checked) ~ .custom-control-label {
+      &::before {
+        border-color: $grey50;
+      }
+      &::after {
+        background-color: $grey40;
+      }
+    }
+
+    &--sm {
+      height: 30px; 
+      line-height: 30px;
+      padding-left: 50px;
+
+      .custom-control-input:checked ~ .custom-control-label {
+        &::after {
+          transform: translateX(16px);
+        }
+      }
+
+      .custom-control-label {
+        &::before {
+          height: 24px;
+          width: 40px;
+          top: 3px;
+          left: -50px;
+        }
+  
+        &::after {
+          background-color: $grey50;
+          height: 18px;
+          width: 18px;
+          top: 6px;
+          left: -47px;
+        }
+      }
+
+    }
+
+    &--no-label {
+      padding-left: 50px;
+
+      .custom-control-label {
+        &::before {
+          left: -50px;
+        }
+        &::after {
+          left: -47px;
+        }
+      }
+    }
+    
+  }
+
+  .custom-control-input[disabled] ~ .custom-control-label, 
+  .custom-control-input:disabled ~ .custom-control-label {
+    color: $text-color;
+  }
+  .custom-control-label {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}
+.custom-control--light {
+
+  &.custom-switch {
+    color: $grey90;
+
+    .custom-control-input:checked ~ .custom-control-label {
+      &::before {
+        background-color: $grey30;
+      }
+      &::after {
+        transform: translateX(20px);
+        background-color: $purple50;
+      }
+    }
+
+    .custom-control-label {
+      &::before {
+        height: 30px;
+        width: 50px;
+        border-radius: 20px;
+        top: 0;
+        left: -60px;
+        box-shadow: none !important;
+        background-color: $grey10;
+        border-color: $grey30;
+      }
+
+      &::after {
+        background-color: $grey30;
+        height: 24px;
+        width: 24px;
+        top: 3px;
+        left: -57px;
+        border-radius: 100%;
+      }
+    }
+
+    // Not disabled states
+    .custom-control-input:not(:disabled):active ~ .custom-control-label,
+    .custom-control-input:not(:disabled):focus:not(:checked) ~ .custom-control-label,
+    .custom-control-input:not(:disabled):hover:not(:checked) ~ .custom-control-label {
+      &::before {
+        border-color: $grey30;
+        background-color: white;
+      }
+      &::after {
+        background-color: darken($grey30, 10%);
+      }
+    }
+
+    // Disabled states
+    .custom-control-input:disabled:active ~ .custom-control-label,
+    .custom-control-input:disabled:focus:not(:checked) ~ .custom-control-label,
+    .custom-control-input:disabled:hover:not(:checked) ~ .custom-control-label {
+      cursor: not-allowed;
+
+      &::before {
+        border-color: $grey30;
+        background-color: transparent;
+      }
+      &::after {
+        background-color: $grey30;
+      }
+    }
+
+  }
+
+  .custom-control-input[disabled] ~ .custom-control-label, 
+  .custom-control-input:disabled ~ .custom-control-label {
+    color: $text-color-dark;
+  }
+  .custom-control-label {
+    &::before {
+      background-color: white;
+      border-color: $grey30;
+    }
+  }
+
+}
+
+
+// Form inputs
+.form-group {
+  label {
+    color: $grey10;
+    @include typography(3, 500);
+  }
+}
+.form-control {
+  background-color: $grey80;
+  border: 1px solid $grey60;
+  color: $grey10;
+  height: 40px;
+  @include typography(2, 500);
+
+  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $grey50;
+    opacity: 1; /* Firefox */
+  }
+
+  &:focus, &:disabled, &[readonly] {
+    background-color: $grey80;
+    border-color: $grey60;
+    box-shadow: none;
+    color: $grey50;
+  }
+
+  &:focus {
+    color: $grey10;
+  }
+
+  &:not(:focus-visible) {
+    outline: none;
+  }
+
+  &--sm {
+    height: 30px;
+  }
+
+  &--light {
+    @include formControlLight();
+  }
+
+  // Dark background theme
+  &--dark {
+    background-color: $grey70;
+    border: 1px solid $secondary;
+
+    &:focus, &:disabled, &[readonly] {
+      background-color: $grey70;
+      border-color: $secondary;
+    }
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $grey40;
+      opacity: 1; /* Firefox */
+    }
+    
+    &:-ms-input-placeholder, &::-ms-input-placeholder { /* Microsoft Edge */
+      color: $grey40;
+    }
+  }
+}
+.input-group {
+  .form-control--dark, .form-control {
+    border-right: 0;
+
+    + .input-group-append {
+      .input-group-text {
+        background: $grey80;
+        border: 1px solid $grey60;
+        color: $grey10;
+        border-left: 0;
+      }
+    }
+  }
+
+  &--sm {
+    .form-control {
+      height: 30px;
+    }
+
+    .input-group-append .input-group-text {
+      height: 30px;
+    }
+  }
+}
+
+// Search field x button
+input[type="search"] {
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 1em;
+    width: 1em;
+    border-radius: 50em;
+    background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+    background-size: contain;
+    opacity: 0;
+    pointer-events: none;
+    filter: invert(1);
+  }
+
+  &:focus::-webkit-search-cancel-button {
+    opacity: .3 !important;
+    pointer-events: all !important;
+    cursor: pointer;
+  }
+  &:focus::-webkit-search-cancel-button:hover {
+    opacity: .5 !important;
+  }
+
+  &.form-control--light {
+    &::-webkit-search-cancel-button {
+      filter: invert(0);
+    }
+  }
+}
+
+// Clickable popover link for more information on something
+.info-popover {
+  // text-decoration: underline dotted;
+  cursor: help;
+  color: inherit;
+
+  > .svg-inline--fa {
+    color: $grey30;
+  }
+
+  &:hover {
+    text-decoration: underline dotted;
+    color: inherit;
+  }
+}
+
+// Progress bar background color fix
+.progress {
+  background-color: $grey80;
+
+  .progress-bar {
+    background-color: $purple60;
+  }
+  
+  &--thin {
+    height: 4px;
+  }
+
+  &--success {
+    .progress-bar {
+      background-color: $green60;
+    }
+  }
+
+  &--info {
+    .progress-bar {
+      background-color: $blue60;
+    }
+  }
+}
+
+.tooltip {
+  &.show {
+    opacity: 1;
+  }
+  
+  .tooltip-inner {
+    background-color: $grey90;
+    border: 1px solid $grey75Line;
+    border-radius: 2px;
+    color: $grey40;
+    padding: 8px 4px;
+    @include typography(1, 500);
+  }
+
+  &.bs-tooltip-top .arrow::before {
+    border-top-color: $grey75Line;
+  }
+  &.bs-tooltip-left .arrow::before {
+    border-left-color: $grey75Line;
+  }
+  &.bs-tooltip-right .arrow::before {
+    border-right-color: $grey75Line;
+  }
+  &.bs-tooltip-bottom .arrow::before {
+    border-bottom-color: $grey75Line;
+  }
+}
+
+.popover {
+
+  .popover-body {
+    background: $grey90;
+    color: $grey40;
+    border: 2px solid $grey75Line;
+    padding: 15px 20px;
+    @include typography(2, 500, $extraLineHeight: true);
+    box-shadow: 2px 2px 12px 0px rgb(0 0 0 / 50%);
+
+    .popover-footer {
+      text-align: center;
+      padding-top: 10px;
+      margin-top: 16px;
+      border-top: 1px solid $grey75Line;
+      @include typography(3, 500); 
+      color: $grey30;
+
+      > a {
+        color: $grey30;
+
+        > .svg-inline--fa {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  &.bs-popover-top > .arrow::after {
+    border-top-color: $grey75Line;
+  }
+  &.bs-popover-right > .arrow::after {
+    border-right-color: $grey75Line;
+  }
+  &.bs-popover-bottom > .arrow::after {
+    border-bottom-color: $grey75Line;
+  }
+  &.bs-popover-left > .arrow::after {
+    border-left-color: $grey75Line;
+  }
+}

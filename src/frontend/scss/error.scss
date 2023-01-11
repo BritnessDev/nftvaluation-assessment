@@ -1,0 +1,105 @@
+@import "./bootstrap-theme";
+
+.error-content {
+  display: flex;
+  padding: 0 200px;
+  gap: 100px;
+
+  > div {
+    flex: 1;
+  }
+  
+  .error-title {
+    font-size: 128px;
+    font-weight: 750;
+    line-height: 154px;
+    color: $grey85Separation;
+  }
+  
+  .error-subtitle {
+    @include typography(9, 700);
+    color: $grey10;
+    line-height: 60px;
+    margin-bottom: 28px;
+  }
+  
+  p {
+    @include typography(5, 500);
+    color: $grey40;
+    line-height: 24px;
+  }
+
+  .nv-btn {
+    display: inline-block;
+    margin-top: 40px;
+  }
+
+  // Mobile
+  @include media-breakpoint-down(md) {
+    padding: 0;
+    gap: 0;
+
+    > div {
+      flex: unset;
+    }
+
+    #errAnimation {
+      display: none;
+    }
+  }
+
+}
+
+#errAnimation {
+  position: relative;
+  height: 100%;
+
+  > img {
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    max-height: 100%;
+  }
+
+  #errAnimationPink {
+    animation: fadeInAnimation ease .2s;
+    animation-delay: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  
+    height: 65%;
+    right: 0;
+  }
+  #errAnimationYellow {
+    animation: fadeInAnimation ease .2s;
+    animation-delay: 1250ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  
+    height: 100%;
+    right: 60px
+  }
+  #errAnimationGreen {
+    animation: fadeInAnimation ease .2s;
+    animation-delay: 1500ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  
+    height: 82%;
+    right: 130px
+  }
+  #errAnimationGrey {
+    animation: fadeInAnimation ease .2s;
+    animation-delay: 1750ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  
+    height: 65%;
+    right: 244px
+  }
+}
+
+@keyframes fadeInAnimation {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

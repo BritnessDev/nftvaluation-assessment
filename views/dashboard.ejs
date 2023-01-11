@@ -1,0 +1,360 @@
+<% layout('layout') %> <% block('headerCSS').append(`
+<link href="/assets/dataTables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="/assets/dashboard.bundle.css" rel="stylesheet" type="text/css" />
+`); %>
+
+<section class="collection-header">
+  <div class="container-fluid">
+    <div class="collection-header__title">
+      Accounts
+
+      <div class="collection-header__title-secondary"></div>
+    </div>
+
+    <!-- Collection nav -->
+    <ul
+      class="collection-header__navigation nav nav-tabs"
+      id="feedNavigation"
+      role="tablist"
+    >
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link active"
+          id="collectionNavigationOverview"
+          data-toggle="tab"
+          href="#overview"
+          role="tab"
+          aria-controls="overview"
+          aria-selected="true"
+          >Overview</a
+        >
+      </li>
+
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link"
+          id="navigationReports"
+          data-toggle="tab"
+          href="#reports"
+          role="tab"
+          aria-controls="reports"
+          aria-selected="false"
+          >Reports</a
+        >
+      </li>
+    </ul>
+
+    <div class="d-flex">
+      <div class="dropdown no-caret">
+        <button
+          type="button"
+          class="nv-btn nv-btn--round dropdown-toggle"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <i class="fa-regular fa-ellipsis"></i>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a
+            class="dropdown-item"
+            target="_blank"
+            href="#"
+            data-toggle="modal"
+            data-target="#collectionDetailsModal"
+            >About</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tab-content">
+  <!-- Overview -->
+  <div
+    class="tab-pane active"
+    id="overview"
+    role="tabpanel"
+    aria-labelledby="navigationOverview"
+  >
+    <!-- Collection quick stats -->
+    <div class="collection-stats">
+      <div class="collection-stats__item">
+        <div class="collection-stats__item-title">Volume</div>
+        <div class="collection-stats__item-value">
+          <%= state.volume.value ? formatCurrency(state.volume.value) : '-' %>
+          <%- getStatChangeIcon(1) %>
+        </div>
+        <div class="collection-stats__item-value-secondary">
+          <%= state.volume.price ? formatCurrencyUsd(state.volume.price) : '' %>
+        </div>
+      </div>
+
+      <div class="collection-stats__item">
+        <div class="collection-stats__item-title">Profits</div>
+        <div class="collection-stats__item-value">
+          <%= state.profits.value ? formatCurrency(state.profits.value) : '-' %>
+          <%- getStatChangeIcon(-1) %>
+        </div>
+        <div class="collection-stats__item-value-secondary">
+          <%= state.profits.price ? formatCurrencyUsd(state.profits.price) : ''
+          %>
+        </div>
+      </div>
+
+      <div class="collection-stats__item">
+        <div class="collection-stats__item-title">Losses</div>
+        <div class="collection-stats__item-value">
+          <%= state.losses.value ? `${ formatCurrency(state.losses.value) }` :
+          '-' %> <%- getStatChangeIcon(1) %>
+        </div>
+        <div class="collection-stats__item-value-secondary">
+          <%= state.losses.price ? formatCurrencyUsd(state.losses.price) : '' %>
+        </div>
+      </div>
+
+      <div class="collection-stats__item">
+        <div class="collection-stats__item-title">Activity wallets</div>
+        <div class="collection-stats__item-value">
+          <%= state.active_wallet.price ?
+          formatNumber(state.active_wallet.price) : '-' %> <%-
+          getStatChangeIcon(1) %>
+        </div>
+      </div>
+
+      <div class="collection-stats__item">
+        <div class="collection-stats__item-title">New wallets</div>
+        <div class="collection-stats__item-value">
+          <%= state.new_wallet.price ? formatNumber(state.new_wallet.price) :
+          '-' %> <%- getStatChangeIcon(1) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <div class="col-lg-8">
+          <!-- 24-Hour Feed -->
+          <div class="card card--dark">
+            <div class="card-body">
+              <div class="mb-4 d-flex justify-content-between flex-wrap">
+                <h2>24-Hour Feed</h2>
+              </div>
+
+              <table id="feedsDataTable" class="table table--stats feeds-table">
+                <% for(let i = 1; i < accounts.length; i++ ) { %>
+                <tr class="feeds__item">
+                  <td class="feeds_item_content left_content">
+                    <div class="d-flex justify-content-between">
+                      <div class="title">
+                        <%= accounts[i].name %>
+                        <div class="feeds_item_content_second title-secondary">
+                          <%= accounts[i].date %> minutes ago
+                        </div>
+                      </div>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-plus">
+                          <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-dropdown dropdown-toggle dropdown-toggle-split"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#"
+                            >Something else here</a
+                          >
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="avatars mt-3">
+                      <img src="https://i.ibb.co/hRwh3bT/avatar.png" alt="avatar" />
+                    </div>
+                  </td>
+                  <td class="feeds_item_content right_content">
+                    <div class="top d-flex justify-content-between">
+                      bought for Ξ<%= accounts[i].budget.count %> (<%=
+                      formatCurrency(accounts[i].budget.price) %>)
+                      <div class="title-secondary">
+                        <%= accounts[i].nfti_value%>% below NFTi
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="bottom d-flex justify-content-between">
+                      <div class="">
+                        <div class="value-title">NFTi</div>
+                        <div class="value-title_secondary">
+                          <%= accounts[i].nfti ?
+                          formatCurrency(accounts[i].nfti) : '-' %>
+                        </div>
+                      </div>
+                      <div class="">
+                        <div class="value-title">ADJ.FLOOR</div>
+                        <div class="value-title_secondary">
+                          <%= accounts[i].adjfloor ?
+                          formatCurrency(accounts[i].adjfloor) : '-' %>
+                        </div>
+                      </div>
+                      <div class="">
+                        <div class="value-title">EST/{RPFOT</div>
+                        <div class="value-title_secondary_green">
+                          <%= accounts[i].profit ?
+                          formatCurrency(accounts[i].profit) : '-' %>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+                <% } %>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card card--dark">
+            <div class="info-btn-group py-3 px-3">
+              <div
+                class="whales-buttons-group btn-group btn-group-toggle nv-tab-btns nv-tab-btns--pill"
+                data-toggle="buttons"
+              >
+                <label class="btn focus"> All </label>
+                <label class="btn focus active">
+                  <input type="checkbox" name="nftActivityType" checked />
+                  Whale
+                </label>
+                <label class="btn focus"> New </label>
+                <label class="btn focus text-center">
+                  <i class="fa fa-ellipsis-v"></i>
+                </label>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <p class="info-label">1250 whales</p>
+              <div class="mt-5">
+                <div class="valuations-tile__distributions-item-info">
+                  <div>EST.Profit</div>
+                  <div class="ml-auto price-text">
+                    Ξ 781.9K
+                    <!-- <span class="text-secondary">BBB</span> -->
+                  </div>
+                </div>
+                <div
+                  class="valuations-tile__distributions-item-progress progress progress--thin progress--info mt-4 rounded-bar"
+                >
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 30%"
+                    aria-valuenow="${ afShare }"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-label="AF market cap share for ${ category.CollectionCategory.Name }"
+                  ></div>
+                </div>
+              </div>
+              <div class="mt-5">
+                <div class="valuations-tile__distributions-item-info">
+                  <div>EST.Profit</div>
+                  <div class="ml-auto price-text">
+                    Ξ 781.9K
+                    <!-- <span class="text-secondary">BBB</span> -->
+                  </div>
+                </div>
+                <div
+                  class="valuations-tile__distributions-item-progress progress progress--thin progress--info mt-4 rounded-bar"
+                >
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 30%"
+                    aria-valuenow="${ afShare }"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-label="AF market cap share for ${ category.CollectionCategory.Name }"
+                  ></div>
+                </div>
+              </div>
+              <div class="mt-5">
+                <div class="valuations-tile__distributions-item-info">
+                  <div>EST.Profit</div>
+                  <div class="ml-auto price-text">
+                    Ξ 781.9K
+                    <!-- <span class="text-secondary">BBB</span> -->
+                  </div>
+                </div>
+                <div
+                  class="valuations-tile__distributions-item-progress progress progress--thin progress--info mt-4 rounded-bar"
+                >
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 30%"
+                    aria-valuenow="${ afShare }"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-label="AF market cap share for ${ category.CollectionCategory.Name }"
+                  ></div>
+                </div>
+              </div>
+              <div class="mt-5">
+                <div class="valuations-tile__distributions-item-info">
+                  <div>EST.Profit</div>
+                  <div class="ml-auto price-text">
+                    Ξ 781.9K
+                    <!-- <span class="text-secondary">BBB</span> -->
+                  </div>
+                </div>
+                <div
+                  class="valuations-tile__distributions-item-progress progress progress--thin progress--info mt-4 rounded-bar"
+                >
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 30%"
+                    aria-valuenow="${ afShare }"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-label="AF market cap share for ${ category.CollectionCategory.Name }"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reports -->
+  <div
+    class="tab-pane"
+    id="reports"
+    role="tabpanel"
+    aria-labelledby="navigationReports"
+  ></div>
+</div>
+<% block('footer').append(`
+<script src="/assets/dataTables.bundle.js" type="text/javascript"></script>
+<script
+  src="/assets/collections-single.bundle.js"
+  type="text/javascript"
+></script>
+<script
+  src="/assets/collections-single.bundle.js"
+  type="text/javascript"
+></script>
+`); %>

@@ -1,0 +1,66 @@
+
+.dropzone {
+  display: flex;
+  border: 6px dashed black;
+  
+  .dz-default.dz-message {
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background: rgba(0, 0, 0, .1)
+    }
+    
+    .dz-button {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+    }
+  }
+
+  .dz-preview {
+    overflow: hidden;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 15%);
+
+    .dz-details {
+      .dz-filename > span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+      }
+    }
+
+    .dz-progress > .dz-upload {
+      height: 10px;
+      display: block;
+      background: red;
+      margin-top: 10px;
+    }
+    
+    .dz-success-mark, .dz-error-mark {
+      display: none;
+    }
+  }
+
+  &.dz-started {
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    place-items: stretch;
+
+    > .dz-default.dz-message {
+      display: none;
+    }
+  }
+
+  &.dz-drag-hover > .dz-default.dz-message {
+    background: rgba(0, 0, 0, .1)
+  }
+}

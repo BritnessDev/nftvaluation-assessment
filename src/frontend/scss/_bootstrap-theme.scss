@@ -1,0 +1,137 @@
+// Brand colors
+$electricViolet: #621DF5;
+$electricViolet60: #5917E6;
+
+$grey100: #09090A;
+$grey90: #17161C;
+$grey85Separation: #1A1A22;
+$grey80: #1D1D26;
+$grey75Line: #23232E;
+$grey70: #282836;
+$grey60: #353547;
+$grey50: #565666;
+$grey40: #79798C;
+$grey30: #A2A3B0;
+$grey10: #F2F2F5;
+
+$purple60: #6F2ED9;
+$purple50: #9452F7;
+$purple40: #B36FF7;
+$purple10: #A59BBB;
+$purple100: rgba($purple60, 20%);
+
+$blue60: #1FA8D1;
+$blue50: #2FC9E0;
+$blue40: #4FEAF0;
+$blue100: rgba($blue60, 15%);
+
+$green60: #2BC23F;
+$green50: #3CD660;
+$green40: #5CE58A;
+$green70: rgba($green60, 55%);
+$green80: rgba($green60, 25%);
+$green100: rgba($green60, 10%);
+
+$yellow60: #FAC848;
+$yellow50: #F9E266;
+$yellow40: #FAF484;
+$yellow100: rgba($yellow60, 15%);
+
+$red60: #AD2E1D;
+$red50: #BE3D2C;
+$red40: #CF6548;
+$red70: rgba($red60, 40%);
+$red100: rgba($red60, 10%);
+
+$pink60: #E5638C;
+$pink50: #F487B4;
+$pink40: #F5A4CE;
+$pink100: rgba($pink60, 15%);
+
+// Bootstrap colors
+$primary: $electricViolet;
+
+// STATE COLORS
+$info: $blue50;
+$danger: $red50;
+$success: $green50;
+$warning: $yellow50;
+
+// Disable navbar animation on mobile
+$transition-collapse: none;
+
+// Brand typography
+@mixin typography($number, $style, $upperCase: false, $extraLineHeight: false) {
+  $lineHeightAddition: 0;
+
+  font-weight: $style;
+  @if $upperCase {
+    text-transform: uppercase;
+  }
+
+  @if $extraLineHeight {
+    $lineHeightAddition: $lineHeightAddition + 4;
+  }
+
+  @if $number == 0 {
+    font-size: 10px;
+    line-height: 10px;
+  } @else if $number == 1 {
+    font-size: 12px;
+    line-height: 12px;
+  } @else if $number == 2 {
+    font-size: 14px;
+    line-height: 14px + $lineHeightAddition;
+  } @else if $number == 3 {
+    font-size: 15px;
+    line-height: 15px;
+  } @else if $number == 4 {
+    font-size: 16px;
+    line-height: 16px;
+  } @else if $number == 5 {
+    font-size: 20px;
+    line-height: 20px;
+  } @else if $number == 6 {
+    font-size: 24px;
+    line-height: 24px;
+  } @else if $number == 7 {
+    font-size: 32px;
+    line-height: 32px;
+  } @else if $number == 8 {
+    font-size: 36px;
+    line-height: 36px;
+  } @else if $number == 9 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+
+$brand-black: $grey90;
+$brand-black-hover: $grey70;
+$brand-light-gray: #eae9ed;
+
+$text-color: $grey40;
+$text-secondary: $grey30;
+
+$secondary: #3E3E50;
+$text-highlight: #ECB94B;
+
+$primary-light: lighten($primary, 40%);
+$primary-light--border: darken($primary-light, 10%);
+$primary-light--hover: darken($primary-light, 10%);
+
+$enable-rounded: false;
+$border-radius: 2px;
+
+$hover-shadow-transition: .2s ease-in-out;
+$box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
+$hover-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "./mixins/mixins.scss";
+
+$text-color-dark: $gray-900; // TODO: Change to our color system
+
+$light-border: $gray-300;

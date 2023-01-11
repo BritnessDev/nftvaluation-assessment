@@ -1,0 +1,224 @@
+@import "./bootstrap-theme";
+
+// @include media-breakpoint-down(lg) {
+//   grid-template-columns: repeat(2, 1fr);
+// }
+
+// @include media-breakpoint-down(md) {
+//   grid-template-columns: repeat(1, 1fr);
+// }
+
+.features-section {
+
+  &--invert {
+    background-color: $grey90;
+    padding: 40px 0;
+  }
+}
+
+.features-title {
+  @include typography(9, 700);
+  line-height: 60px;
+  margin-bottom: 28px;
+
+  @include media-breakpoint-down(md) {
+    @include typography(7, 700);
+    line-height: 32px;
+    margin-bottom: 16px;
+  }
+}
+
+.features-subtitle {
+  @include typography(5, 500);
+  line-height: 24px;
+
+  @include media-breakpoint-down(md) {
+    @include typography(3, 500);
+    line-height: 18px;
+  }
+}
+
+.features-text-secondary {
+  @include typography(2, 500);
+  color: $grey50;
+}
+
+.features-link {
+  @include typography(3, 500);
+  color: $grey30;
+  display: flex;
+
+  .svg-inline--fa {
+    margin-left: 10px;
+  }
+}
+
+hr {
+  border-color: $grey75Line;
+}
+
+.features-two-column {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 140px;
+  padding: 50px 0;
+
+  @include media-breakpoint-down(md) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 60px;
+  }
+}
+
+.features-list {
+  display: flex;
+  gap: 24px;
+
+  @include media-breakpoint-down(md) {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__tile {
+    padding: 24px 30px;
+    background-color: $grey90;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    position: relative;
+
+    &-badge {
+      background-color: $grey60;
+      padding: 5px 8px;
+      @include typography(0, 700);
+      color: $grey30;
+      position: absolute;
+      right: 20px;
+      top: -10px;
+    }
+    
+    &-icon {
+      color: $purple50;
+      font-size: 28px;
+    }
+
+    &-content {
+      flex: 1;
+    }
+
+    &-title {
+      @include typography(4, 600);
+      color: $grey10;
+    }
+
+    &-text {
+      margin-top: 8px;
+    }
+
+  }
+
+  &--invert {
+    .features-list__tile {
+      background-color: $grey80;
+    }
+  }
+}
+
+.features-supported-collections {
+  background-color: $grey90;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 140px;
+
+  @include media-breakpoint-down(md) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+
+  > div:first-child {
+    padding: 50px 0 50px 50px;
+
+    @include media-breakpoint-down(md) {
+      padding: 30px 30px 0 30px;
+    }
+  }
+
+  .features-title {
+    @include typography(7, 700);
+    color: $grey30;
+
+    @include media-breakpoint-down(md) {
+      @include typography(6, 700);
+    }
+  }
+
+  &__count {
+    @include typography(7, 700);
+    color: $grey10;
+
+    @include media-breakpoint-down(md) {
+      @include typography(6, 700);
+    }
+  }
+
+  .supported-collections-list {
+    border-bottom: 1px solid $grey75Line;
+    display: flex;
+    gap: 30px;
+    padding: 15px 0;
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &-title {
+        @include typography(2, 500);
+        color: $grey30;
+      }
+
+      &-count {
+        @include typography(2, 700);
+        color: $grey10;
+      }
+    }
+  }
+}
+
+
+.community-callout {
+  padding: 60px;
+  background-color: $grey90;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 300px;
+
+  @include media-breakpoint-down(md) {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 30px;
+  }
+
+  h1 {
+    @include typography(8, 700);
+    margin-bottom: 20px;
+
+    @include media-breakpoint-down(md) {
+      @include typography(7, 700);
+      line-height: 36px;
+      margin-bottom: 12px;
+    }
+
+  }
+
+  .nv-btn {
+    white-space: nowrap;
+  }
+  
+}

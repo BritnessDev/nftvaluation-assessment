@@ -1,0 +1,213 @@
+// brand buttons
+.nv-btn-group {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+
+  .nv-btn {
+  
+    &+.dropdown-toggle {
+      border: none;
+      outline: none;
+      color: $grey10;
+      padding-left: 16px;
+      padding-right: 16px;
+      background-color: $grey75Line;
+    }
+    
+    &+.nv-btn--dark .dropdown-toggle {
+      background-color: $grey80;
+    }
+  
+    &+.nv-btn--brand .dropdown-toggle {
+      background-color: $electricViolet60;
+    }
+  
+  }
+}
+.nv-btn {
+  @include typography(3, 600);
+  padding: 16px 20px;
+  background-color: $grey70;
+  color: $grey10;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+
+  &:hover {
+    background-color: $grey75Line;
+    color: $grey10;
+    text-decoration: none;
+  }
+  
+  &.nv-btn--dark {
+    background-color: $grey90;
+
+    &:hover {
+      background-color: $grey80;
+    }
+  }
+
+  &.nv-btn--sm {
+    height: 40px;
+  }
+
+  &.nv-btn--xs {
+    height: 30px;
+    padding: 4px 8px;
+  }
+
+  &.nv-btn--round-ct-nav {
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 100%;
+    background-color: $grey70;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+    &:hover {
+      background-color: $grey50;
+    }
+
+    &.nv-btn--sm {
+      width: 36px;
+      height: 36px;
+      @include typography(2, 500);
+    }
+  }
+
+  &.nv-btn--round {
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 100%;
+    background-color: $grey90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+    &:hover {
+      background-color: $grey80;
+    }
+
+    &.nv-btn--sm {
+      width: 36px;
+      height: 36px;
+      @include typography(2, 500);
+    }
+  }
+
+  > .nv-btn--icon {
+    color: $purple50;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  &.nv-btn--brand {
+    background-color: $electricViolet;
+
+    &:hover {
+      background-color: $electricViolet60;
+    }
+
+    > .nv-btn--icon {
+      color: $grey10;
+    }
+  }
+
+  &.nv-btn--image-icon {
+    display: flex;
+    gap: 10px;
+
+    > img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+// Tab buttons
+.nv-tab-btns {
+  display: flex;
+  overflow-x: auto;
+
+  .btn {
+    height: 40px;
+    background-color: $grey90;
+    color: $grey40;
+    padding: 12px 20px;
+    border: none;
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include typography(2, 600);
+
+    &:hover {
+      background-color: $grey80;
+    }
+
+    &.active {
+      background-color: $grey70;
+      color: $grey10;
+    }
+  }
+
+  &--sm {
+    .btn {
+      height: 50px;
+      background-color: transparent;
+      padding: 4px;
+      @include typography(1, 500);
+  
+      &:hover {
+        background-color: $grey80;
+      }
+  
+      &.active {
+        background-color: $grey60;
+        color: $grey10;
+      }
+    }
+
+    .btn--icon {
+      width: 50px;
+      @include typography(5, 500);
+    }
+  }
+
+  &--pill {
+    gap: 8px;
+
+    .btn {
+      background-color: $grey90;
+      color: $grey40;
+      border-radius: 40px;
+      padding: 8px 24px;
+      @include typography(1, 500);
+  
+      &:hover {
+        background-color: $grey100;
+        color: $grey10;
+      }
+  
+      &.active {
+        background-color: $grey10;
+        color: $grey90;
+      }
+
+      > .svg-inline--fa {
+        @include typography(4, 500);
+        margin-right: 12px;
+      }
+    }
+  }
+  
+}

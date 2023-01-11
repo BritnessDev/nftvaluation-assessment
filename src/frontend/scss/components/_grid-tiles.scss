@@ -1,0 +1,227 @@
+@import "../bootstrap-theme";
+
+.grid-tiles {
+  display: grid;
+  gap: 10px;
+  place-items: stretch;
+
+  &--2 {
+    grid-template-columns: repeat(2, 1fr);
+
+    @include media-breakpoint-down(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include media-breakpoint-down(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include media-breakpoint-down(xs) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  
+  &--3 {
+    grid-template-columns: repeat(3, 1fr);
+    @include media-breakpoint-down(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  &--4 {
+    grid-template-columns: repeat(4, 1fr);
+    @include media-breakpoint-down(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &--vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    
+    .grid-tiles__tile {
+      &:not(:last-of-type) {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &--invert {
+    .grid-tiles__tile {
+      background-color: transparent;
+      border: 1px solid $brand-black-hover;
+
+      &-info > .svg-inline--fa {
+        color: $text-secondary;
+      }
+    }
+  }
+
+  &--sm {
+    .grid-tiles__tile {
+      padding: 10px;
+    }
+  }
+
+  &__tile {
+    text-align: center;
+    background: $secondary;
+    padding: 20px 10px;
+    border: 1px solid $secondary;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    color: white !important;
+    position: relative;
+    
+    &-info {
+      cursor: pointer;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+    }
+
+    &-heading {
+      line-height: 1rem;
+      color: $grey30;
+    } 
+
+    &-content {
+      font-weight: bold;
+      margin-bottom: 5px;
+      margin-top: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &-content--key-value {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      > table {
+        text-align: left;
+        tr td:first-child {
+          padding-right: 10px;
+        }
+      }
+    }
+
+    &-secondary-content {
+      font-size: 0.9rem;
+      color: $grey30;
+      line-height: 0.9rem;
+    }
+
+  }
+
+  a.grid-tiles__tile {
+    transition: .1s ease-in-out;
+
+    &:hover {
+      text-decoration: none;
+      background: lighten($secondary, 5%);
+    }
+  }
+}
+
+.valuations-tile {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0;
+  position: relative;
+
+  &__help-icon {
+    position: absolute;
+    top: 16px;
+    right: 12px;
+    cursor: pointer;
+  }
+
+  &__title {
+    @include typography(3, 500);
+    margin-bottom: 28px;
+  }
+
+  &__value {
+    color: $grey10;
+    @include typography(7, 700);
+    margin-bottom: 20px;
+
+    &--brand {
+      color: $purple50;
+    }
+  }
+
+  &__secondary-value {
+    @include typography(6, 500);
+  }
+
+  &__distributions {
+    width: calc(100% - 32px);
+    margin: 16px;
+    padding-top: 16px;
+    border-top: 1px solid $grey75Line;
+
+    &-item {
+
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+
+      &-info {
+        display: flex;
+        margin-bottom: 8px;
+
+        .text-secondary {
+          color: $grey50 !important;
+          @include typography(2, 500);
+        }
+      }
+    }
+  }
+
+  &__updated-at {
+    @include typography(2, 500);
+    padding-top: 10px;
+    border-top: 1px solid $grey75Line;
+    margin-top: 16px;
+    text-align: center;
+    margin: 16px 16px 0 16px;
+    width: calc(100% - 32px);
+
+    > .svg-inline--fa {
+      margin-right: 8px;
+    }
+  }
+
+  &:first-child {
+    background-color: $grey90;
+  }
+  &:nth-child(2) {
+    background-color: $grey85Separation;
+  }
+
+  @include media-breakpoint-down(lg) {
+    padding: 16px;
+
+    &__title {
+      text-align: center;
+      @include typography(2, 500);
+      margin-bottom: 16px;
+    }
+
+    &__value {
+      @include typography(6, 700);
+      margin-bottom: 12px;
+    }
+  }
+}

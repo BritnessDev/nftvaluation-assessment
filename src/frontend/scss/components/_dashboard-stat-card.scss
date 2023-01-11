@@ -1,0 +1,202 @@
+
+.dashboard-stat {
+  position: relative;
+  text-align: center;
+
+  &:first-child {
+    background-color: $grey90;
+  }
+  &:nth-child(2) {
+    background-color: $grey85Separation;
+  }
+
+  &__settings.dropdown {
+    position: absolute;
+    top: 0;
+    right: 5px;
+
+    .dropdown-toggle {
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      border: 0;
+    }
+
+  }
+
+  &__bigtitle {
+    @include typography(2, 500);
+    padding: 1.4rem 2.8rem;
+    background: $grey70;
+    color: white;
+  }
+
+  &__title {
+    @include typography(2, 500);
+    margin-bottom: 28px;
+
+    &__profit {
+      color: $grey10;
+      @include typography(4, 500);
+      margin-bottom: 0px !important;
+    }
+  }
+
+  &__value {
+    color: $grey10;
+    @include typography(6, 700);
+    margin-top: 12px;
+  }
+
+  &__value-secondary {
+    @include typography(3, 500);
+  }
+
+  &__nfts-count {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $grey90;
+    color: $grey10;
+    border-radius: 4px;
+    padding: 5px 15px;
+  }
+
+  // Horizontal layout
+  &--horizontal {
+
+    &.profit {
+      width: 48%;
+    }
+
+    .card-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dashboard-stat__value {
+      margin-top: 0;
+      @include typography(5, 700);
+    }
+
+    .dashboard-stat__value-secondary {
+      margin-top: 12px;
+    }
+
+  }
+
+  // Special container for NFTi
+  &--nfti {
+
+    .dashboard-stat__value {
+      color: $purple50;
+      @include typography(7, 700);
+      margin-bottom: 20px;
+    }
+
+    .dashboard-stat__value-secondary {
+      @include typography(6, 500);
+    }
+
+    .dashboard-stat__nfti-background {
+      background-image: linear-gradient(0deg, rgb(0 0 0 / 80%), transparent), url(https://dxph5t0rbaxmg.cloudfront.net/images/portfolio-dashboard-nfts-background.svg);
+      background-size: auto 170px;
+      background-repeat: no-repeat;
+      background-position: bottom;
+      height: 200px;
+      margin: 0 -1.25rem -1.25rem;
+    }
+  }
+
+    // Special container for Adj
+    &--adj {
+
+      .dashboard-stat__value {
+        color: $blue50;
+        @include typography(7, 700);
+        margin-bottom: 20px;
+      }
+  
+      .dashboard-stat__value-secondary {
+        @include typography(6, 500);
+      }
+  
+      .dashboard-stat__nfti-background {
+        background-image: linear-gradient(0deg, rgb(0 0 0 / 80%), transparent), url(https://dxph5t0rbaxmg.cloudfront.net/images/portfolio-dashboard-nfts-background.svg);
+        background-size: auto 170px;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        height: 200px;
+        margin: 0 -1.25rem -1.25rem;
+      }
+    }
+}
+
+
+.collection-stats {
+  display: flex;
+  flex: 1;
+
+  .collection-stats__item:nth-child(even) {
+    background-color: #17161C;
+  }
+
+  @include media-breakpoint-down(lg) {
+    flex-wrap: wrap;
+  }
+
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+  }
+
+  &__item {
+    flex: 1;
+    display: flex;
+    padding: 0 15px;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    // border-left: 1px solid $grey75Line;
+    background-color: #1A1A22;
+
+    &:last-child {
+      border-right: 1px solid $grey75Line;
+    }
+
+    @include media-breakpoint-down(sm) {
+      justify-content: flex-start;
+    }
+
+    &-title {
+      margin-right: 20px;
+      color: $grey10;
+    }
+
+    &-value {
+      text-align: right;     
+    }
+
+    &-arrow {
+      margin-left: 6px;
+    }
+
+    &-value-primary {
+      color: $grey10;
+      @include media-breakpoint-down(sm) {
+        margin-left: auto;
+      }
+    }
+
+    &-value-primary-secondary {
+      // margin-top: 4px;
+      color: $grey40;
+    }
+
+    &-value-secondary {
+      // margin-top: 4px;
+      color: $grey40;
+    }
+  }
+}

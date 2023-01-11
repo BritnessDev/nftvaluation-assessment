@@ -1,0 +1,128 @@
+name: CI/CD Pipeline (Staging)
+
+on: 
+  push: 
+    branches:
+      - staging
+
+jobs:
+  test:
+    name: CI Pipeline (Eslint & Test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install AWS SDK
+        run: 
+          npm install aws-sdk
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: eu-central-1
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}} 
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+
+      - name: Start EC2 instance
+        run: node start_ec2.js
+
+      - name: TestProject Execute Jobs
+        uses: Mahan-F/test-project-action@8e7582f5987a9f6198d634c19b1868131d4f9811
+        with:
+          project_id: ${{ secrets.TEST_PROJECT_ID }}
+          api_key: ${{ secrets.TEST_PROJECT_API_KEY }}
+          wait_for_tests: false
+      
+      - name: Stop EC2 instance
+        if: ${{ always() }}
+        run: node stop_ec2.js
+
+  lint:
+    name: Run code linter
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with: 
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run linter
+        run: npm run lint
+
+  # buildBackEnd:
+  #   name: Build back end
+  #   runs-on: ubuntu-latest
+  #   needs: lint
+  #   steps:
+  #     - name: Checkout source code
+  #       uses: actions/checkout@v3
+  #     - name: Cache dependencies
+  #       uses: actions/cache@v3
+  #       with: 
+  #         path: ~/.npm
+  #         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+  #     - name: Install dependencies
+  #       run: npm ci
+  #     - name: Build
+  #       run: npm run build:back
+  
+  # buildFrontEnd:
+  #   name: Build back end
+  #   runs-on: ubuntu-latest
+  #   needs: lint
+  #   steps:
+  #     - name: Checkout source code
+  #       uses: actions/checkout@v3
+  #     - name: Cache dependencies
+  #       uses: actions/cache@v3
+  #       with: 
+  #         path: ~/.npm
+  #         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+  #     - name: Install dependencies
+  #       run: npm ci
+  #     - name: Build
+  #       run: npm run build:front
+
+  deploy:
+    name: CD Pipeline (Deploy)
+    runs-on: ubuntu-latest
+    # needs: [buildFrontEnd, buildBackEnd]
+    needs: lint
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
+
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+
+      - name: Get current date time
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYY-MM-DDTHH-mm-ss-SSS
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v20
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: nftvaluations-staging-application
+          environment_name: nftvaluations-staging
+          version_label: "${{ steps.previoustag.outputs.tag }}-${{ steps.current-time.outputs.formattedTime }}"
+          region: ${{ secrets.AWS_REGION }}
+          wait_for_deployment: false
+          deployment_package: deploy.zip

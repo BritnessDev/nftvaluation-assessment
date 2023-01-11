@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "../../../public/assets",
+    "module": "esnext",
+    "target": "es6",
+    "sourceMap": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "typeRoots": [
+      "../../../node_modules/@types",
+      "./@types"
+    ]
+  },
+  "include": ["*", "**/*"]
+}

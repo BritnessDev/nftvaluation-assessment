@@ -1,0 +1,105 @@
+@import '../bootstrap-theme';
+
+.status-banner {
+  padding: 16px 0;
+  background-color: $grey70;
+  color: $grey10;
+
+  .container, .status-banner__container {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .status-banner__container {
+    padding: 0 16px;
+  }
+
+  &__text {
+    @include typography(2, 500);
+
+    p:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  &--danger{
+    background-color: $red50;
+    color: $grey10;
+
+    a {
+      @include typography(2, 700);
+      text-decoration: underline !important;
+      text-decoration-style: dashed !important;
+
+      &:hover {
+        text-decoration-style: solid !important;
+      }
+    }
+    
+  }
+
+  &--alert {
+    background-color: $yellow60;
+    color: $grey90;
+  }
+
+  &--info {
+    background-color: $blue60;
+    color: $grey90;
+  }
+
+  &--alert, &--info {
+    a {
+      color: $grey90;
+      @include typography(2, 700);
+      text-decoration: underline !important;
+      text-decoration-style: dashed !important;
+
+      &:hover {
+        color: $grey90;
+        text-decoration-style: solid !important;
+      }
+    }
+  }
+
+  // With icon
+  &--with-icon {
+    height: 50px;
+    padding: 0;
+    display: flex;
+
+    .container, .status-banner__container {
+      justify-content: flex-start;
+      flex: 1;
+      padding-left: 0;
+    }
+
+    .status-banner__icon {
+      background-color: rgba(0, 0, 0, .15);
+      height: 50px;
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      position: relative;
+
+      &::after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-left: 6px solid rgba(0, 0, 0, .15);
+        position: absolute;
+        right: -6px;
+      }
+    }
+
+    .status-banner__text {
+      padding: 8px 0;
+    }
+  }
+}

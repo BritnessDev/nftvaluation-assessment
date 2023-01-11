@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "watch": [ "src/backend/" ],
+  "ignore": [ "src/frontend/" ],
+  "ext": ".ts,.js",
+  "exec": "./node_modules/.bin/ts-node --files -P ./tsconfig.json ./src/backend/server.ts"
+}

@@ -1,0 +1,55 @@
+.profile-header {
+  min-height: 330px;
+  margin-bottom: 2rem;
+
+  &__cover-photo {
+    height: 250px;
+    overflow: hidden;
+    background-color: $brand-black;
+    background-image: url('https://dxph5t0rbaxmg.cloudfront.net/images/default-cover.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    box-shadow: inset 0px -15px 15px -10px rgba(black, .4);
+  }
+
+  &__photo {
+    position: relative;
+
+    img, .jazzicon {
+      position: absolute;
+      right: 80px;
+      top: -80px;
+      width: 160px;
+      height: 160px;
+      border-radius: 100%;
+      border: 2px solid white;
+      background: $brand-black;
+      object-fit: cover;
+
+      @include media-breakpoint-down(sm) {
+        top: -170px;
+        right: 0;
+        left: 0;
+        margin: auto;
+      }
+    }
+  }
+
+  &__title {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+
+    h1 {
+      margin: 0 10px 0 0;
+      display: inline-block;
+    }
+  }
+
+  &__subtitle {
+    color: $text-secondary;
+  }
+
+}

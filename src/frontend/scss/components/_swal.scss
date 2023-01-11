@@ -1,0 +1,57 @@
+@import "../bootstrap-theme";
+
+.swal2-container {
+  .swal2-popup {
+    background-color: $brand-black;
+    border: 1px solid $brand-black-hover;
+    border-radius: 0;
+
+    &.swal2-success {
+      border-top: 6px solid $success;
+    }
+    &.swal2-fail {
+      border-top: 6px solid $danger;
+    }
+    &.swal2-action {
+      border-top: 6px solid $info;
+    }
+
+    .swal2-title {
+      color: $grey10;
+      @include typography(6, 700);
+      margin-top: 2rem;
+    }
+
+    .swal2-content, .swal2-html-container {
+      color: $text-color;
+    }
+
+    .swal2-input {
+      color: $text-color;
+      border-color: $brand-black-hover;
+      box-shadow: none;
+    }
+
+    .swal2-actions {
+
+      button {
+        border-radius: 0;
+        box-shadow: none;
+        font-weight: 700;
+        height: 50px;
+        padding: 0.5rem 2rem;
+
+        &.swal2-confirm {
+          background-color: $primary;
+        }
+        &.swal2-deny {
+          background-color: $danger;
+        }
+        &.swal2-cancel {
+          background-color: $secondary;
+        }
+      }
+
+    }
+  }
+}

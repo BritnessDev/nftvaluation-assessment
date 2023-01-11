@@ -1,0 +1,6 @@
+dist/*
+node_modules/*
+public/*
+views/*
+src/backend/**/*.json
+webpack.config.js

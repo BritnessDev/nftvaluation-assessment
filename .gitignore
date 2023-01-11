@@ -1,0 +1,9 @@
+node_modules/
+dist/
+logs/
+public/assets/
+.env
+
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

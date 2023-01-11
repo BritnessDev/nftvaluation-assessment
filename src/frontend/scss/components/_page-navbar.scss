@@ -1,0 +1,23 @@
+
+@mixin pageNavbar() {
+  border: none;
+  // border-top: 1px solid $grey60;   //remove the top border
+  margin-top: 2rem;
+
+  .nav-item {
+    .nav-link {
+      margin-bottom: 0;
+      color: $grey10;
+      border: 0;
+      border-bottom: 5px solid transparent;
+      padding: 1rem 2rem;
+      font-size: 16px;
+
+      &.active {
+        color: $grey10;
+        border-bottom-color: $purple50;
+        background-color: transparent;
+      }
+    }
+  }
+}

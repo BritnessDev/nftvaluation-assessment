@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/header') %>
+  <body>
+
+    <% if ( typeof hideFooter === 'undefined' ) { %>
+    <!-- Status banner -->
+    <div id="globalStatusBanner" class="status-banner d-none">
+      <div class="container">
+        <div class="status-banner__text"></div>
+        <div class="status-banner__action"></div>
+      </div>
+    </div>
+    <% } %>
+    
+    <% if ( typeof authenticatedPage !== 'undefined' && authenticatedPage ) { %>
+    <input type="hidden" name="authenticatedPage">
+    <% } %>
+
+    <%- body -%>
+    <!-- end:: Page -->
+    <%- include('partials/footer') %>
+  </body>
+</html>

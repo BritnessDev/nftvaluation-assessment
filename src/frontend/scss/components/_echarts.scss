@@ -1,0 +1,133 @@
+@import '../bootstrap-theme';
+
+.echarts-header {
+  background-color: $brand-black;
+  border: 1px solid $brand-black-hover;
+  border-bottom: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  position: relative;
+
+  &__loader {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgb(0 0 0 / 50%);
+    z-index: 1;
+  }
+
+  @include media-breakpoint-down(lg) {
+    flex-wrap: wrap;
+    gap: 12px;
+
+    & > * {
+      width: 100%;
+    }
+  }
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--no-border {
+    border: none;
+    padding: 0;
+  }
+
+  &__title {
+    @include typography(3, 500);
+    color: $grey30;
+  }
+
+  // .btn-group.btn-group-toggle {
+  //   .btn {
+  //     background-color: transparent;
+  //     border: none;
+  //     padding: 1rem;
+
+  //     &.active {
+  //       border-bottom: 3px solid $secondary;
+  //     }
+  //   }
+  // }
+
+  + .echarts-container {
+    border-top: none;
+  }
+}
+
+.echarts-container {
+  position: relative;
+  background-color: $brand-black;
+  border: 1px solid $brand-black-hover;
+  padding: 1rem 0;
+
+  &::before {
+    content: " ";
+    position: absolute;
+    background-image: url(https://dxph5t0rbaxmg.cloudfront.net/images/logo-light-horizontal.svg);
+    background-repeat: no-repeat;
+    background-size: 20%;
+    background-position: center center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.05;
+
+    @include media-breakpoint-down(md) {
+      background-size: 60%;
+    }
+  }
+
+  &--no-logo::before {
+    display: none;
+  }
+  
+  &__loader {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(0 0 0 / 50%);
+
+    &-box {
+      width: 30%;
+      height: 30%;
+      background: $grey85Separation;
+      border: 1px solid $grey80;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.echarts-tooltip {
+
+  &__title {
+    color: $grey10;
+    @include typography(2, 600);
+    margin-bottom: 12px;
+  }
+
+  &__table {
+    td {
+      border-top: 1px solid $grey80;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+  }
+
+}
