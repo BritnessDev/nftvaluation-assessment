@@ -1,7 +1,6 @@
 const dotenv = require("dotenv");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const CopyPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const webpack = require("webpack");
 dotenv.config();
@@ -9,13 +8,9 @@ dotenv.config();
 const vendors = [
   "./src/frontend/scss/bootstrap.scss",
   "./node_modules/select2/dist/js/select2.min.js",
-  // './src/frontend/js/_bootstrap.ts',
-  // './node_modules/bootstrap/dist/js/bootstrap.js',
 ];
 
-const mainAssets = [
-  "./src/frontend/scss/main.scss",
-];
+const mainAssets = ["./src/frontend/scss/main.scss"];
 
 const dataTableAssets = [
   "./node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css",
@@ -27,7 +22,7 @@ const dataTableAssets = [
 ];
 
 const pages = {
-  "dashboard": {
+  dashboard: {
     import: "./src/frontend/js/dashboard.ts",
     dependOn: "dataTables",
   },
@@ -57,20 +52,9 @@ Object.keys(pages).forEach((page) => {
       import: pages[page].import,
     };
   }
-
-  // if ( Array.isArray(pages[page]) ) {
-  //   entryFiles[page].push(...pages[page])
-  // } else {
-  //   entryFiles[page].push(pages[page])
-  // }
 });
 
 const plugins = [
-  // new CopyPlugin({
-  //   patterns: [
-  //     { from: './src/frontend/images', to: 'images' }
-  //   ],
-  // }),
   new MiniCssExtractPlugin({
     filename: "[name].bundle.css",
   }),
@@ -153,17 +137,11 @@ module.exports = {
       util: require.resolve("util/"),
       url: require.resolve("url/"),
       events: require.resolve("events/"),
-      // 'crypto': require.resolve('crypto-browserify'),
-      // 'stream': require.resolve('stream-browserify'),
-      // 'http': require.resolve('stream-http'),
-      // 'https': require.resolve('https-browserify'),
-      // 'os': require.resolve('os-browserify/browser')
     },
   },
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "./public/assets"),
-    // publicPath: process.env.NODE_ENV === 'production' ? 'https://static.nftvaluations.com/assets/' : '/assets/',
     publicPath: "auto",
     clean: true,
   },

@@ -1,11 +1,7 @@
 {
-  "name": "nftvaluations-website",
+  "name": "Assessment",
   "version": "0.9.44",
-  "description": "NFT Valuations website",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/UniversityOfNicosia/nftvaluations-website.git"
-  },
+  "description": "Assessment",
   "main": "dist/server.js",
   "engines": {
     "node": "^16.15.0",
@@ -20,7 +16,7 @@
     "lint": "eslint .",
     "postversion": "git push && git push --tags"
   },
-  "author": "Mahan Fathi <fathi.m@unic.ac.cy>",
+  "author": "Olaf Zenko",
   "license": "ISC",
   "dependencies": {
     "@aws-amplify/api": "^4.0.60",
