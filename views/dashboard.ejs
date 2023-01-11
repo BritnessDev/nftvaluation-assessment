@@ -178,8 +178,10 @@
                         </div>
                       </div>
                     </div>
-                    <div class="avatars mt-3">
-                      <img src="https://i.ibb.co/hRwh3bT/avatar.png" alt="avatar" />
+                    <div class="avatars mt-3 d-flex">
+                      <% for(let j = 1; j < accounts[i].nfts.length; j++ ) { %>
+                        <img src=<%= accounts[i].nfts[j].photo %> alt="avatar" width="30" height="30" class="ml-1"/>
+                      <% } %>
                     </div>
                   </td>
                   <td class="feeds_item_content right_content">

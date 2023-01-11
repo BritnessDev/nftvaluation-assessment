@@ -1,161 +1,161 @@
 {
-    "state": {
-        "volume": {
-            "value": 60.94,
-            "status": true,
-            "price": 171143
-        },
-        "profits": {
-            "value": 60.94,
-            "status": false,
-            "price": 171143
-        },
-        "losses": {
-            "value": 60.94,
-            "status": true,
-            "price": 171143
-        },
-        "active_wallet": {
-            "status": true,
-            "price": 145500
-        },
-        "new_wallet": {
-            "status": true,
-            "price": 1329
-        }
+  "state": {
+    "volume": {
+      "value": 60.94,
+      "status": true,
+      "price": 171143
     },
-    "accounts": [
-        {
-            "name": "hodlponkz.eth",
-            "date": "2023-01-11 11:15 am",
-            "budget": {
-                "price": 442102,
-                "count": 245.2
-            },
-            "nfti_value": 310,
-            "nfti": 760.12,
-            "adjfloor": 720.42,
-            "profit": 514.92,
-            "nfts": [
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                },
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                },
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                },
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                }
-            ]
-        },
-        {
-            "name": "hodlponkz.eth",
-            "date": "2023-01-11 11:15 am",
-            "budget": {
-                "price": 442102,
-                "count": 245.2
-            },
-            "nfti_value": 310,
-            "nfti": 760.12,
-            "adjfloor": 720.42,
-            "profit": 514.92,
-            "nfts": [
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                },
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                },
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                },
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                }
-            ]
-        },
-        {
-            "name": "hodlponkz.eth",
-            "date": "2023-01-11 11:15 am",
-            "budget": {
-                "price": 442102,
-                "count": 245.2
-            },
-            "nfti_value": 310,
-            "nfti": 760.12,
-            "adjfloor": 720.42,
-            "profit": 514.92,
-            "nfts": [
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                },
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                },
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                },
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                }
-            ]
-        },
-        {
-            "name": "hodlponkz.eth",
-            "date": "2023-01-11 11:15 am",
-            "budget": {
-                "price": 442102,
-                "count": 245.2
-            },
-            "nfti_value": 310,
-            "nfti": 760.12,
-            "adjfloor": 720.42,
-            "profit": 514.92,
-            "nfts": [
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                },
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                },
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                },
-                {
-                    "photo": "https://google.com/avatar.png",
-                    "user_id": "arvw3f23412245v3232313"
-                }
-            ]
-        }
-    ],
-    "account_info": {
-        "whales": {
-            "counts": 1250,
-            "profit": 781900,
-            "loss": 781900,
-            "gas": 781900,
-            "bought": 781900,
-            "sold": 781900,
-            "transferred": 781900,
-            "listed": 781900
-        }
+    "profits": {
+      "value": 60.94,
+      "status": false,
+      "price": 171143
+    },
+    "losses": {
+      "value": 60.94,
+      "status": true,
+      "price": 171143
+    },
+    "active_wallet": {
+      "status": true,
+      "price": 145500
+    },
+    "new_wallet": {
+      "status": true,
+      "price": 1329
     }
+  },
+  "accounts": [
+    {
+      "name": "hodlponkz.eth",
+      "date": "2023-01-11 11:15 am",
+      "budget": {
+        "price": 442102,
+        "count": 245.2
+      },
+      "nfti_value": 310,
+      "nfti": 760.12,
+      "adjfloor": 720.42,
+      "profit": 514.92,
+      "nfts": [
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        },
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        },
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        },
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        }
+      ]
+    },
+    {
+      "name": "hodlponkz.eth",
+      "date": "2023-01-11 11:15 am",
+      "budget": {
+        "price": 442102,
+        "count": 245.2
+      },
+      "nfti_value": 310,
+      "nfti": 760.12,
+      "adjfloor": 720.42,
+      "profit": 514.92,
+      "nfts": [
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        },
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        },
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        },
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        }
+      ]
+    },
+    {
+      "name": "hodlponkz.eth",
+      "date": "2023-01-11 11:15 am",
+      "budget": {
+        "price": 442102,
+        "count": 245.2
+      },
+      "nfti_value": 310,
+      "nfti": 760.12,
+      "adjfloor": 720.42,
+      "profit": 514.92,
+      "nfts": [
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        },
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        },
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        },
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        }
+      ]
+    },
+    {
+      "name": "hodlponkz.eth",
+      "date": "2023-01-11 11:15 am",
+      "budget": {
+        "price": 442102,
+        "count": 245.2
+      },
+      "nfti_value": 310,
+      "nfti": 760.12,
+      "adjfloor": 720.42,
+      "profit": 514.92,
+      "nfts": [
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        },
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        },
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        },
+        {
+          "photo": "https://i.ibb.co/hRwh3bT/avatar.png",
+          "user_id": "arvw3f23412245v3232313"
+        }
+      ]
+    }
+  ],
+  "account_info": {
+    "whales": {
+      "counts": 1250,
+      "profit": 781900,
+      "loss": 781900,
+      "gas": 781900,
+      "bought": 781900,
+      "sold": 781900,
+      "transferred": 781900,
+      "listed": 781900
+    }
+  }
 }
