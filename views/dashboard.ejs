@@ -144,7 +144,7 @@
               </div>
 
               <table id="feedsDataTable" class="table table--stats feeds-table">
-                <% for(let i = 1; i < accounts.length; i++ ) { %>
+                <% for(let i = 0; i < accounts.length; i++ ) { %>
                 <tr class="feeds__item">
                   <td class="feeds_item_content left_content">
                     <div class="d-flex justify-content-between">
@@ -247,7 +247,7 @@
                       aria-haspopup="true"
                       aria-expanded="false"
                     >
-                      <i class="fa fa-ellipsis-v"></i>
+                      <i class="fa fa-ellipsis"></i>
                     </button>
                   </div>
                 </div>
@@ -256,12 +256,12 @@
 
             <div class="card-body">
               <p class="info-label"><%= account_info.whales.counts  %>  whales</p>
-              <% for(let i = 1; i < 5; i++ ) { %>
+              <% for(let i = 0; i < account_info.whales.datas.length; i++ ) { %>
                 <div class="mt-5">
                   <div class="valuations-tile__distributions-item-info">
-                    <div>EST.Profit</div>
+                    <div><%= account_info.whales.datas[i].label %></div>
                     <div class="ml-auto price-text">
-                      <%=  account_info.whales.profit ? formatCurrency( account_info.whales.profit) : '-' %>
+                      <%=  account_info.whales.datas[i].value ? formatCurrency( account_info.whales.datas[i].value) : '-' %>
                       <!-- <span class="text-secondary">BBB</span> -->
                     </div>
                   </div>
@@ -271,7 +271,7 @@
                     <div
                       class="progress-bar"
                       role="progressbar"
-                      style="width: 30%"
+                      style="width: <%= account_info.whales.datas[i].percentage %>%"
                       aria-valuenow="${ afShare }"
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -298,11 +298,11 @@
 <% block('footer').append(`
 <script src="/assets/dataTables.bundle.js" type="text/javascript"></script>
 <script
-  src="/assets/collections-single.bundle.js"
+  src="/assets/dashboard.bundle.js"
   type="text/javascript"
 ></script>
 <script
-  src="/assets/collections-single.bundle.js"
+  src="/assets/dashboard.bundle.js"
   type="text/javascript"
 ></script>
 `); %>

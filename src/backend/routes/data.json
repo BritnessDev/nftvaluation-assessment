@@ -27,7 +27,7 @@
   "accounts": [
     {
       "name": "hodlponkz.eth",
-      "date": "2023-01-11 11:15 am",
+      "date": "5",
       "budget": {
         "price": 442102,
         "count": 245.2
@@ -57,7 +57,7 @@
     },
     {
       "name": "hodlponkz.eth",
-      "date": "2023-01-11 11:15 am",
+      "date": "5",
       "budget": {
         "price": 442102,
         "count": 245.2
@@ -87,7 +87,7 @@
     },
     {
       "name": "hodlponkz.eth",
-      "date": "2023-01-11 11:15 am",
+      "date": "5",
       "budget": {
         "price": 442102,
         "count": 245.2
@@ -117,7 +117,7 @@
     },
     {
       "name": "hodlponkz.eth",
-      "date": "2023-01-11 11:15 am",
+      "date": "5",
       "budget": {
         "price": 442102,
         "count": 245.2
@@ -149,13 +149,43 @@
   "account_info": {
     "whales": {
       "counts": 1250,
-      "profit": 781900,
-      "loss": 781900,
-      "gas": 781900,
-      "bought": 781900,
-      "sold": 781900,
-      "transferred": 781900,
-      "listed": 781900
+      "datas": [
+        {
+          "label": "Est. Profit",
+          "value": 781900,
+          "percentage": 60
+        },
+        {
+          "label": "Est. Loss",
+          "value": 781900,
+          "percentage": 40
+        },
+        {
+          "label": "Gas Fees",
+          "value": 781900,
+          "percentage": 10
+        },
+        {
+          "label": "Bought",
+          "value": 781900,
+          "percentage": 80
+        },
+        {
+          "label": "Sold",
+          "value": 781900,
+          "percentage": 30
+        },
+        {
+          "label": "Transferred",
+          "value": 781900,
+          "percentage": 5
+        },
+        {
+          "label": "Listed",
+          "value": 781900,
+          "percentage": 15
+        }
+      ]
     }
   }
 }
