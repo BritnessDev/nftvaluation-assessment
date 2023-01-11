@@ -238,102 +238,48 @@
                   Whale
                 </label>
                 <label class="btn focus"> New </label>
-                <label class="btn focus text-center">
-                  <i class="fa fa-ellipsis-v"></i>
-                </label>
+                <div class="d-flex">
+                  <div class="dropdown no-caret">
+                    <button
+                      type="button"
+                      class="nv-btn nv-btn--round dropdown-toggle"
+                      data-toggle="dropdown1"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i class="fa fa-ellipsis-v"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div class="card-body">
-              <p class="info-label">1250 whales</p>
-              <div class="mt-5">
-                <div class="valuations-tile__distributions-item-info">
-                  <div>EST.Profit</div>
-                  <div class="ml-auto price-text">
-                    Ξ 781.9K
-                    <!-- <span class="text-secondary">BBB</span> -->
+              <p class="info-label"><%= account_info.whales.counts  %>  whales</p>
+              <% for(let i = 1; i < 5; i++ ) { %>
+                <div class="mt-5">
+                  <div class="valuations-tile__distributions-item-info">
+                    <div>EST.Profit</div>
+                    <div class="ml-auto price-text">
+                      <%=  account_info.whales.profit ? formatCurrency( account_info.whales.profit) : '-' %>
+                      <!-- <span class="text-secondary">BBB</span> -->
+                    </div>
+                  </div>
+                  <div
+                    class="valuations-tile__distributions-item-progress progress progress--thin progress--info mt-4 rounded-bar"
+                  >
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      style="width: 30%"
+                      aria-valuenow="${ afShare }"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      aria-label="AF market cap share for ${ category.CollectionCategory.Name }"
+                    ></div>
                   </div>
                 </div>
-                <div
-                  class="valuations-tile__distributions-item-progress progress progress--thin progress--info mt-4 rounded-bar"
-                >
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 30%"
-                    aria-valuenow="${ afShare }"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    aria-label="AF market cap share for ${ category.CollectionCategory.Name }"
-                  ></div>
-                </div>
-              </div>
-              <div class="mt-5">
-                <div class="valuations-tile__distributions-item-info">
-                  <div>EST.Profit</div>
-                  <div class="ml-auto price-text">
-                    Ξ 781.9K
-                    <!-- <span class="text-secondary">BBB</span> -->
-                  </div>
-                </div>
-                <div
-                  class="valuations-tile__distributions-item-progress progress progress--thin progress--info mt-4 rounded-bar"
-                >
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 30%"
-                    aria-valuenow="${ afShare }"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    aria-label="AF market cap share for ${ category.CollectionCategory.Name }"
-                  ></div>
-                </div>
-              </div>
-              <div class="mt-5">
-                <div class="valuations-tile__distributions-item-info">
-                  <div>EST.Profit</div>
-                  <div class="ml-auto price-text">
-                    Ξ 781.9K
-                    <!-- <span class="text-secondary">BBB</span> -->
-                  </div>
-                </div>
-                <div
-                  class="valuations-tile__distributions-item-progress progress progress--thin progress--info mt-4 rounded-bar"
-                >
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 30%"
-                    aria-valuenow="${ afShare }"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    aria-label="AF market cap share for ${ category.CollectionCategory.Name }"
-                  ></div>
-                </div>
-              </div>
-              <div class="mt-5">
-                <div class="valuations-tile__distributions-item-info">
-                  <div>EST.Profit</div>
-                  <div class="ml-auto price-text">
-                    Ξ 781.9K
-                    <!-- <span class="text-secondary">BBB</span> -->
-                  </div>
-                </div>
-                <div
-                  class="valuations-tile__distributions-item-progress progress progress--thin progress--info mt-4 rounded-bar"
-                >
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 30%"
-                    aria-valuenow="${ afShare }"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    aria-label="AF market cap share for ${ category.CollectionCategory.Name }"
-                  ></div>
-                </div>
-              </div>
+              <% } %>
             </div>
           </div>
         </div>
